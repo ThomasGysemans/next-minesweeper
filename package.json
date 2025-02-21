@@ -29,5 +29,6 @@
   "lint-staged": {
     "*.js,ts,jsx,tsx": "eslint --cache --fix",
     "*.{js,ts,jsx,tsx,css,md}": "prettier --write"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }
