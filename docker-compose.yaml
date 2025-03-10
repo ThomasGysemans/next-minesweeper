@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  minesweeper:
+    container_name: 'minesweeper'
+    ports:
+      - "2201:3000"
+    build:
+      context: .
+    restart: no
