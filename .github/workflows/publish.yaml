@@ -17,9 +17,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: get-npm-version
-        id: package-version
-        uses: martinbeentjes/npm-get-version-action@v1.3.1
+      - name: Build Docker image
+        run: docker build . --file Dockerfile --tag minesweeper:${{ github.run_number }}
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v3
+      - name: Stop and remove existing container
+        run: |
+          docker stop minesweeper || true
+          docker rm minesweeper || true
+
+      - name: Run Docker container
+        run: docker run -d -p 2201:3000 --name minesweeper minesweeper:${{ github.run_number }}
